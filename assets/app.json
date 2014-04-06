@@ -1,0 +1,16 @@
+{
+    "plugins": {
+        "OnsenUI_1.0.1": {
+            "theme": [
+                "topcoat-mobile-onsen-ios7.css"
+            ]
+        }
+    },
+    "splash": {
+        "android": {
+            "background": "#CCCCCC",
+            "autoHide": true
+        }
+    },
+    "version": "1.0"
+}

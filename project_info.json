@@ -1,0 +1,14 @@
+{
+    "title-ja": "",
+    "title-en": "Filmkampen",
+    "description-ja": "",
+    "description-en": "",
+    "category": "template",
+    "platform": [
+        "android",
+        "ios",
+        "winrt"
+    ],
+    "name": "generated-20140406215849-5328ad237e2193d81bcea189",
+    "version": 1
+}
