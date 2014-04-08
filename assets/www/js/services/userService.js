@@ -1,9 +1,11 @@
 'use strict';
 
 angular.module('Filmkampen')
-  .service('UserService', function($http, $resource) {
+  .service('UserService', function($http, $resource, SessionService) {
 
     var USER = $resource("https://filmkampen-server.herokuapp.com/rest/user/:id", {id: "@id"});
+    var USER_BY_USERNAME = $resource("https://filmkampen-server.herokuapp.com/rest/user/findUserByUsername/:username", {username: "@username"});
+    
     var USERS = $resource("https://filmkampen-server.herokuapp.com/rest/user", {},
         { get: {method: 'GET', isArray: true},
           post: {method: 'POST'}});
@@ -12,8 +14,12 @@ angular.module('Filmkampen')
         return USERS.get();    
     };
     
-    this.getUser = function() {
-        return USER.get({id : "533DC43A0364B9A02ADB4ADA"});
+    this.getUser = function(username) {
+        return USER_BY_USERNAME.get({username : username});
+    };
+    
+    this.getCurrentUser = function() {
+        $scope.user = SessionService.getUser().username;
     };
     
     this.saveUser = function(user) {

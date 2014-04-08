@@ -9,8 +9,8 @@ angular.module('Filmkampen')
         $scope.users = UserService.getUsers();
     }
     
-    $scope.getUser = function() {
-        $scope.user = UserService.getUser();
+    $scope.getCurrentUser = function() {
+        $scope.user = UserService.getCurrentUser();
     }
     
     $scope.saveUser = function(user) {
