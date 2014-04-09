@@ -37,11 +37,9 @@ angular.module('Filmkampen', ['ngRoute','dropbox','ngResource','ngCookies'])
   }).config(function (DropboxProvider) {
     DropboxProvider.config('7w6skyoccuryvqr', 'https://ide.monaca.mobi/components/ngDropbox/callback.html');
   }).config(['$httpProvider', function ($httpProvider) {
-        // delete header from client:
-        // http://stackoverflow.com/questions/17289195/angularjs-post-data-to-external-rest-api
+        $httpProvider.responseInterceptors.push('HttpInterceptorService');
         $httpProvider.defaults.useXDomain = true;
         delete $httpProvider.defaults.headers.common['X-Requested-With'];
-        $httpProvider.responseInterceptors.push('HttpInterceptorService');
   }]).run(function() {
     FastClick.attach(document.body);
   }).run(function (ApiService) {

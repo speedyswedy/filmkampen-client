@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('Filmkampen')
-  .service('AuthorizationService', function($http) {
+  .service('AuthorizationService', function($http, Base64) {
 
   return {
       login: function (credentials) {
