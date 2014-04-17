@@ -3,10 +3,10 @@
 angular.module('Filmkampen')
   .service('UserService', function($http, $resource, SessionService) {
 
-    var USER = $resource("https://filmkampen-server.herokuapp.com/rest/user/:id", {id: "@id"});
-    var USER_BY_USERNAME = $resource("https://filmkampen-server.herokuapp.com/rest/user/findUserByUsername/:username", {username: "@username"});
+    var USER = $resource("http://filmkampen-server.herokuapp.com/rest/user/:id", {id: "@id"});
+    var USER_BY_USERNAME = $resource("http://filmkampen-server.herokuapp.com/rest/user/findUserByUsername/:username", {username: "@username"});
     
-    var USERS = $resource("https://filmkampen-server.herokuapp.com/rest/user", {},
+    var USERS = $resource("http://filmkampen-server.herokuapp.com/rest/user", {},
         { get: {method: 'GET', isArray: true},
           post: {method: 'POST'}});
     

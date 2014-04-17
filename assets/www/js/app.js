@@ -39,6 +39,10 @@ angular.module('Filmkampen', ['ngRoute','dropbox','ngResource','ngCookies'])
   }).config(['$httpProvider', function ($httpProvider) {
         $httpProvider.responseInterceptors.push('HttpInterceptorService');
         $httpProvider.defaults.useXDomain = true;
+        $httpProvider.defaults.headers.common = {};
+        $httpProvider.defaults.headers.post = {};
+        $httpProvider.defaults.headers.put = {};
+        $httpProvider.defaults.headers.patch = {};
         delete $httpProvider.defaults.headers.common['X-Requested-With'];
   }]).run(function() {
     FastClick.attach(document.body);

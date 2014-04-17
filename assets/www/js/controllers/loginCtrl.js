@@ -1,31 +1,29 @@
 'use strict';
 
 angular.module('Filmkampen')
-  .controller('LoginCtrl', function ($scope, $location, $cookieStore, AuthorizationService, ApiService, SessionService, Base64) {
+  .controller('LoginCtrl', function ($scope, $http, $location, $cookieStore, AuthorizationService, ApiService, SessionService, Base64) {
   
   $scope.login = function () {
       
-      var credentials = {
-          username: $scope.username,
-          password: Base64.encode($scope.password)
+      $scope.credentials = "Basic " + Base64.encode($scope.username + ":" + $scope.password);
+      
+      var success = function (response) {
+          if (response.trim() == "OK") {
+            ApiService.init($scope.credentials);
+            SessionService.setUser({"username": $scope.username})
+            $cookieStore.put('credentials', $scope.credentials);
+            $location.path('/home');
+          } else {
+            $location.path('/start');  
+          }
       };
 
-      var success = function (data) {
-          var token = data.token;
-          
-          ApiService.init(token);
-          
-          SessionService.setUser({"username": $scope.username})
-
-          $cookieStore.put('token', token);
-          $cookieStore.put('credentials', 'Basic' + $scope.username + ":" + $scope.password);
-          $location.path('/home');
+      var error = function (response) {
+          alert("FEL");
       };
+      
+      var param = {"username":$scope.username, "password":$scope.password};
 
-      var error = function () {
-          alert("sorry");
-      };
-
-      AuthorizationService.login(credentials).success(success).error(error);
+      AuthorizationService.login($scope.credentials, param).success(success).error(error);
   };
 });
