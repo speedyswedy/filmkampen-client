@@ -15,8 +15,7 @@ angular.module('Filmkampen')
         
         $timeout(function() {
             $scope.currentTime = player.currentTime;
-            $scope.endTime = player.seekable.end();
-            
+            $scope.endTime = player.seekable.end(0);
             if ($scope.currentTime < $scope.endTime) {
                 $scope.progress(player);
             }
@@ -24,6 +23,8 @@ angular.module('Filmkampen')
         }, 100);
        
     };
+    
+    
     
     $scope.startPlayer = function(player) {
         player.play();
@@ -40,9 +41,10 @@ angular.module('Filmkampen')
     $scope.start = function() {
         $timeout(function() {
             var player = document.getElementById("video");
+            player.loop = false;
             if (player) {
-                if (player.currentTime == 0) { 
-                    $scope.startPlayer(player);
+                if (player.currentTime == 0) {
+                    player.onloadeddata=$scope.startPlayer(player);
                 }
             } else {
                $scope.start(); 
@@ -50,6 +52,6 @@ angular.module('Filmkampen')
         }, 500);
     }
     
-    $scope.start();
+    window.onload = $scope.start();
     
 });

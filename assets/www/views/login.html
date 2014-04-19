@@ -1,9 +1,20 @@
+<ng-include src="'views/notLoggedInNavigation.html'"></ng-include>
 <div class="center">
   <h1>Logga in</h1>
   <form ng-submit="login()">
-      <div>Användarnamn:<input type="text" name="username" ng-model="username" required/></div>
-      <div>Lösenord:<input type="password" name="password" ng-model="password" required/></div>
+      <table>
+        <tr>
+            <td>Användarnamn:</td>
+            <td><input type="text" name="username" ng-model="username" required/></td>
+        </tr>
+        <tr>
+            <td align="right">Lösenord:</td>
+            <td><input type="password" name="password" ng-model="password" required/></td>
+        </tr>
+      </table>
       <div>&nbsp;</div>
       <button type="submit" class="topcoat-button--large--cta">Logga in</button>
   </form>
+  <div>&nbsp;</div>
+  <button ng-click="go('/changePassword')" class="topcoat-button--large--cta">Glömt lösenord?</button>
 </div>

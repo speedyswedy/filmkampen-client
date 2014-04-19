@@ -31,6 +31,14 @@ angular.module('Filmkampen', ['ngRoute','dropbox','ngResource','ngCookies'])
         templateUrl: 'views/settings.html',
         controller: 'UserCtrl'
       })
+      .when('/changePassword', {
+        templateUrl: 'views/changePassword.html',
+        controller: 'ChangePasswordCtrl'
+      })
+      .when('/passwordSent', {
+        templateUrl: 'views/passwordSent.html',
+        controller: 'PasswordSentCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });

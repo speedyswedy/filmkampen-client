@@ -9,6 +9,9 @@ angular.module('Filmkampen')
     var USERS = $resource("http://filmkampen-server.herokuapp.com/rest/user", {},
         { get: {method: 'GET', isArray: true},
           post: {method: 'POST'}});
+          
+    var RESET_PASSWORD = $resource("http://filmkampen-server.herokuapp.com/rest/user/resetPassword", {},
+        { post: {method: 'POST'}});
     
     this.getUsers = function() {
         return USERS.get();    
@@ -24,6 +27,11 @@ angular.module('Filmkampen')
     
     this.saveUser = function(user) {
         return USERS.post(user);
+    };
+    
+    this.resetPassword = function(email) {
+        alert(email);
+        RESET_PASSWORD.post(email);
     };
     
 });
