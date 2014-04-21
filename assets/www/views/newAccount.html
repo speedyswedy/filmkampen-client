@@ -1,0 +1,20 @@
+<ng-include src="'views/notLoggedInNavigation.html'"></ng-include>
+<div class="center">
+  <h1>Nytt konto</h1>
+  <form ng-submit="newAccount()">
+      <table>
+        <tr>
+            <td>Användarnamn:</td>
+            <td><input type="text" name="username" ng-model="username" required/></td>
+        </tr>
+        <tr>
+            <td align="right">Lösenord:</td>
+            <td><input type="password" name="password" ng-model="password" required/></td>
+        </tr>
+      </table>
+      <div>&nbsp;</div>
+      <div class="red_font">{{error}}</div>
+      <div>&nbsp;</div>
+      <button type="submit" class="topcoat-button--large--cta">Spara användare</button>
+  </form> 
+</div>

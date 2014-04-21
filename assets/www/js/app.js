@@ -39,6 +39,14 @@ angular.module('Filmkampen', ['ngRoute','dropbox','ngResource','ngCookies'])
         templateUrl: 'views/passwordSent.html',
         controller: 'PasswordSentCtrl'
       })
+      .when('/newAccount', {
+        templateUrl: 'views/newAccount.html',
+        controller: 'NewAccountCtrl'
+      })
+      .when('/logout', {
+        templateUrl: 'views/loggedOut.html',
+        controller: 'LogoutCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });
@@ -52,6 +60,7 @@ angular.module('Filmkampen', ['ngRoute','dropbox','ngResource','ngCookies'])
         $httpProvider.defaults.headers.put = {};
         $httpProvider.defaults.headers.patch = {};
         delete $httpProvider.defaults.headers.common['X-Requested-With'];
+        $httpProvider.defaults.headers.common['Content-Type'] = 'application/json;charset=utf-8';
   }]).run(function() {
     FastClick.attach(document.body);
   }).run(function (ApiService) {

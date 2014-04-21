@@ -25,6 +25,7 @@ angular.module('Filmkampen')
     } else {
       $scope.error = "";      
       UserService.resetPassword($scope.email);
+      $scope.go('/passwordSent');        
     };
   };
   
